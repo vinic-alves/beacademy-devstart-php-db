@@ -6,9 +6,10 @@ USE db_escola;
 
 --CRIAR TABELA--
 CREATE TABLE tb_professor(
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    cpf CHAR(11) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL
 );
 CREATE TABLE tb_aluno(
     nome VARCHAR(100) NOT NULL,
@@ -26,5 +27,21 @@ VALUES (
 
 INSERT INTO tb_professor ( nome, email, cpf)
 VALUES (
-    'Bruno', 'bruno@house.com','88888888899'
+    'Alessandra', 'aless@email.com','18805558890'
 );
+
+-- Excluir tabela --
+DROP TABLE tb_professor;
+
+
+INSERT INTO tb_aluno ( nome, email, cpf, matricula)
+VALUES (
+    'Maria', 'mai@emailquente.com','00700700770', '9090909090'
+);
+INSERT INTO tb_aluno ( nome, email, cpf, matricula)
+VALUES (
+    'John', 'john@outlook.com','19119119193','3232323232'
+);
+
+-- Selecionar od dados --
+SELECT * FROM tb_aluno; --Exemplo--
