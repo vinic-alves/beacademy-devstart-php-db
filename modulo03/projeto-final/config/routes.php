@@ -15,10 +15,14 @@ $routes = [
     '/' => createRoute(IndexController::class, 'indexAction'),
     '/produtos' => createRoute(ProductController::class, 'listAction'),
     '/produtos/novo' =>createRoute(ProductController::class, 'addAction'),
+    '/produtos/excluir' =>createRoute(ProductController::class, 'removeAction'),
+    '/produtos/editar' =>createRoute(ProductController::class, 'editAction'),
+    '/produtos/relatorio' => createRoute(ProductController::class, 'reportAction'),
     '/categorias' => createRoute(CategoryController::class, 'listAction'),
     '/categorias/nova' => createRoute(CategoryController::class, 'addAction'),
     '/categoria/excluir' =>createRoute(CategoryController::class,'removeAction'),
     '/categoria/editar' => createRoute(CategoryController::class, 'updateAction'),
+
 ];
 
 return $routes;
