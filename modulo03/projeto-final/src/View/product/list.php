@@ -20,7 +20,7 @@
     </thead>
     <tbody>
         <?php 
-            while($product = $data->fecth(\PDO::FETCH_ASSOC)){
+            while($product =$data->fecth(\PDO::FETCH_ASSOC)){
                 extract($product);
                 echo "
                     <tr>

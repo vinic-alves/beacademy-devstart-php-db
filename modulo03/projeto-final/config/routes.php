@@ -1,4 +1,6 @@
 <?php
+
+
 use App\Controller\CategoryController;
 
 use App\Controller\IndexController;
