@@ -1,73 +1,87 @@
 <?php
-declare(strict_types=1);
+
+declare (strict_types=1);
+
 namespace App\Controller;
-ini_set('display_errors',1);
 
 use App\Connection\Connection;
 
+
+// use FTP\Connection;
 
 class CategoryController extends AbstractController
 {
     public function listAction(): void
     {
         $con = Connection::getConnection();
+
         $result = $con->prepare('SELECT * FROM tb_category');
         $result->execute();
-        
-        //include dirname(__DIR__).'/View/category/list.php';
+
         parent::render('category/list', $result);
     }
+
     public function addAction(): void
     {
-        if($_POST){
+        if ($_POST) {
             $name = $_POST['name'];
-            $description = $_POST['description'];
+            $description = $_POST['description']; 
 
-            $query = "INSERT INTO tb_category(name,description)VALUEs ('{$name}', '{$description}')";
+            $query = "INSERT INTO tb_category (name, description) VALUES('{$name}' ,'{$description}')";
 
             $con = Connection::getConnection();
 
-            $result=$con->prepare($query);
+            $result = $con->prepare($query);
             $result->execute();
+
+            echo 'Categoria cadastrada com sucesso!';
+
+
         }
+
         parent::render('category/add');
     }
+
     public function removeAction(): void
     {
         $con = Connection::getConnection();
+
         $id = $_GET['id'];
+
         $query = "DELETE FROM tb_category WHERE id='{$id}'";
+
         $result = $con->prepare($query);
         $result->execute();
 
-        echo 'Pronto, Categoria excluida';
+        echo 'Categoria excluida com sucesso!';
+
     }
     public function updateAction(): void
     {
-        $id= $_GET['id'];
+        $id = $_GET['id'];
 
         $con = Connection::getConnection();
 
-        if($_POST){
+        if ($_POST) {
             $newName = $_POST['name'];
             $newDescription = $_POST['description'];
 
-            $queryUpdate = "UPDATE tb_category SET name='{$newName}', description= '{$newDescription}' WHERE id='{$id}'";
+            $queryUpdate = "UPDATE tb_category  SET name='{$newName}', description='{$newDescription}' WHERE id='{$id}' ";
 
             $result = $con->prepare($queryUpdate);
             $result->execute();
 
-            echo 'Categoria atualizada';
+            echo 'Categoria Atualizada com sucesso!';
         }
 
-        $query= "SELECT * FROM tb_category WHERE id='{$id}'";
+        $query = "SELECT * FROM tb_category WHERE id='{$id}'";
 
         $result = $con->prepare($query);
         $result->execute();
 
         $data = $result->fetch(\PDO::FETCH_ASSOC);
 
-        parent::render('category/edit',$data);
+        parent::render('category/edit', $data);
     }
 
 }

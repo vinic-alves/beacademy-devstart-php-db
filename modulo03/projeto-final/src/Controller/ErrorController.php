@@ -8,6 +8,6 @@ class ErrorController extends AbstractController
 {
     public function notFoundAction(): void
     {
-        parent::render('error/notFound');
+        parent::render('Error/notFound');
     }
 }
