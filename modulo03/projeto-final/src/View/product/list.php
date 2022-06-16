@@ -2,7 +2,7 @@
     
 <div class="mb-3 text-end">
     <a href="/produtos/novo" class= "btn btn-outline-primary"  >Novo Produto</a>
-    <a href="/produtos/relatorio" class= "btn btn-outline-dark"  >Gerar Relatório</a>
+    <a href="/produtos/relatorio" class= "btn btn-dark"  >Gerar PDF</a>
 </div>
 
 
@@ -14,7 +14,7 @@
             <th>Descrição</th>
             <th>Imagem</th>
             <th>Preço</th>
-            <th>Saldo Estoque</th>
+            <th>Quantidade</th>
             <th>Data Cadastro</th>
             <th>Ações</th>
         </tr>
